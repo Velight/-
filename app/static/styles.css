@@ -24,7 +24,7 @@ dialog{width:min(470px,92vw);max-height:85dvh;border:1px solid var(--edge);borde
 .panel-heading{margin-bottom:calc(16 * var(--s))}
 .panel-heading button svg{width:16px;height:16px}
 .contact-body h2{font-weight:550;font-size:calc(17.5 * var(--s));letter-spacing:-.015em}
-.contact-body{font-size:calc(14 * var(--s));scrollbar-width:thin;scrollbar-color:#e6e6e6 transparent}
+.contact-body{font-size:calc(14 * var(--s));scrollbar-width:none;-ms-overflow-style:none}
 .contact-body .section-label{margin-top:calc(26 * var(--s))}
 .contact-body blockquote{line-height:1.35}
 .graph .node-name{font-size:10px}
@@ -45,3 +45,5 @@ dialog{width:min(470px,92vw);max-height:85dvh;border:1px solid var(--edge);borde
 
 /* Keep the application shell and graph stable across interactions. */
 .map-screen,.map-screen .panel{animation:none}.graph .person{transition:transform .18s ease-out,opacity .15s ease-out}.graph .edge{transition:opacity .15s ease-out}.segmented button{transition:background .16s,color .16s}.map-screen button:active{transform:none}.graph .person rect{transition:fill .15s,stroke .15s,stroke-width .15s}.graph .edge{transition:opacity .15s,stroke .15s,stroke-width .15s}@media(prefers-reduced-motion:reduce){.graph .person,.graph .edge{transition:none!important}}
+
+.contact-body::-webkit-scrollbar{display:none;width:0;height:0}
