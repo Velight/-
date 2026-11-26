@@ -3,6 +3,9 @@ import json
 import os
 import secrets
 from contextlib import asynccontextmanager
+from pathlib import Path
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from typing import Annotated, Literal
 from fastapi import FastAPI, Depends, HTTPException, Query, Security
 from fastapi.security import APIKeyHeader
@@ -505,5 +508,12 @@ def create_app(db_path=None, keys=None, seed_demo=None, run_worker=True, ai=None
             "citations": h["citations"],
             "messages": i,
         }
+
+    static_dir = Path(__file__).resolve().parent / "static"
+    a.mount("/ui-assets", StaticFiles(directory=static_dir), name="ui-assets")
+
+    @a.get("/", include_in_schema=False)
+    def frontend():
+        return FileResponse(static_dir / "index.html")
 
     return a
